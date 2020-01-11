@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <title>Hanzi</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.1/dist/hanzi-writer.min.js"></script>
+</head>
+<body onload='main()'>
+
+  Overlaying an svg object with blueish lines:<br>
+
+  <object id="svg"></object>
+  
+<script type='text/javascript'>
+  var writer = HanziWriter.create('svg', '爽', {
+    width: 450,
+    height: 450,
+    padding: 20,
+    strokeColor: '#0BABAB',
+    radicalColor: '#8b0000'
+  });
+</script>
+
+  <script type="text/javascript">
+
+    var svgNS = "http://www.w3.org/2000/svg";  
+
+    function main() {
+
+      var svg = document.getElementById('svg').firstChild;
+      console.log(svg);
+        var width = 450;
+      for (var y=0; y<3; y++) {
+        var line = document.createElementNS(svgNS, 'line');          
+        line.setAttributeNS(null, 'x1', 0);
+        line.setAttributeNS(null, 'y1', 0);
+        if (y == 0) {
+            line.setAttributeNS(null, 'x2', width);
+            line.setAttributeNS(null, 'y2', 0);
+        }
+        if (y == 1) {
+            line.setAttributeNS(null, 'x2', width);
+            line.setAttributeNS(null, 'y2', width);
+        }
+        if (y == 2) {
+            line.setAttributeNS(null, 'x2', 0);
+            line.setAttributeNS(null, 'y2', width);
+        }        
+        line.setAttributeNS(null, 'stroke', '#000');
+        line.setAttributeNS(null, 'stroke-width', .5);
+
+        svg.insertBefore(line, svg.childNodes[0]);
+
+      }
+
+    }
+
+  </script>  
+</body>
+</html>

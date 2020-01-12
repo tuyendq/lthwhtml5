@@ -31,24 +31,27 @@
       var svg = document.getElementById('svg').firstChild;
       console.log(svg);
         var width = 450;
-      for (var y=0; y<3; y++) {
+      for (var i = 0; i <= width; i += width/2) {
         var line = document.createElementNS(svgNS, 'line');          
         line.setAttributeNS(null, 'x1', 0);
-        line.setAttributeNS(null, 'y1', 0);
-        if (y == 0) {
-            line.setAttributeNS(null, 'x2', width);
-            line.setAttributeNS(null, 'y2', 0);
-        }
-        if (y == 1) {
-            line.setAttributeNS(null, 'x2', width);
-            line.setAttributeNS(null, 'y2', width);
-        }
-        if (y == 2) {
-            line.setAttributeNS(null, 'x2', 0);
-            line.setAttributeNS(null, 'y2', width);
-        }        
+        line.setAttributeNS(null, 'y1', i);
+        line.setAttributeNS(null, 'x2', width);
+        line.setAttributeNS(null, 'y2', i);        
+
+        // if (y == 0) {
+        //     line.setAttributeNS(null, 'x2', width);
+        //     line.setAttributeNS(null, 'y2', 0);
+        // }
+        // if (y == 1) {
+        //     line.setAttributeNS(null, 'x2', width);
+        //     line.setAttributeNS(null, 'y2', width);
+        // }
+        // if (y == 2) {
+        //     line.setAttributeNS(null, 'x2', 0);
+        //     line.setAttributeNS(null, 'y2', width);
+        // }        
         line.setAttributeNS(null, 'stroke', '#000');
-        line.setAttributeNS(null, 'stroke-width', .5);
+        line.setAttributeNS(null, 'stroke-width', .25);
 
         svg.insertBefore(line, svg.childNodes[0]);
 

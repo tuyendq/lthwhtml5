@@ -1,64 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <title>Hanzi</title>
 
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.1/dist/hanzi-writer.min.js"></script>
 </head>
+
 <body onload='main()'>
 
   Overlaying an svg object with blueish lines:<br>
 
   <object id="svg"></object>
-  
-<script type='text/javascript'>
-  var writer = HanziWriter.create('svg', '爽', {
-    width: 450,
-    height: 450,
-    padding: 20,
-    strokeColor: '#0BABAB',
-    radicalColor: '#8b0000'
-  });
-</script>
+
+  <script type='text/javascript'>
+    var writer = HanziWriter.create('svg', '爽', {
+      width: 450,
+      height: 450,
+      padding: 20,
+      strokeColor: '#000000',
+      radicalColor: '#8b0000'
+    });
+  </script>
 
   <script type="text/javascript">
 
-    var svgNS = "http://www.w3.org/2000/svg";  
+    var svgNS = "http://www.w3.org/2000/svg";
 
     function main() {
 
       var svg = document.getElementById('svg').firstChild;
       console.log(svg);
-        var width = 450;
-      for (var i = 0; i <= width; i += width/2) {
-        var line = document.createElementNS(svgNS, 'line');          
-        line.setAttributeNS(null, 'x1', 0);
-        line.setAttributeNS(null, 'y1', i);
-        line.setAttributeNS(null, 'x2', width);
-        line.setAttributeNS(null, 'y2', i);        
+      var width = 450;
 
-        // if (y == 0) {
-        //     line.setAttributeNS(null, 'x2', width);
-        //     line.setAttributeNS(null, 'y2', 0);
-        // }
-        // if (y == 1) {
-        //     line.setAttributeNS(null, 'x2', width);
-        //     line.setAttributeNS(null, 'y2', width);
-        // }
-        // if (y == 2) {
-        //     line.setAttributeNS(null, 'x2', 0);
-        //     line.setAttributeNS(null, 'y2', width);
-        // }        
-        line.setAttributeNS(null, 'stroke', '#000');
-        line.setAttributeNS(null, 'stroke-width', .25);
+      var rect = document.createElementNS(svgNS, 'rect');
+      rect.setAttributeNS(null, 'x', 0 );
+      rect.setAttributeNS(null, 'y', 0 );
+      rect.setAttributeNS(null, 'width', width );
+      rect.setAttributeNS(null, 'height', width );
+      rect.setAttributeNS(null, 'stroke', '#000000');
+      rect.setAttributeNS(null, 'stroke-width', 2.0);
+      rect.setAttributeNS(null, 'fill', 'transparent');
+      
+      svg.insertBefore(rect, svg.childNodes[0]);
 
-        svg.insertBefore(line, svg.childNodes[0]);
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttributeNS(null, 'x1', width/2);
+      line.setAttributeNS(null, 'y1', 0);
+      line.setAttributeNS(null, 'x2', width/2);
+      line.setAttributeNS(null, 'y2', width);
+      line.setAttributeNS(null, 'stroke', '#111');
+      line.setAttributeNS(null, 'stroke-width', .2);
+      svg.insertBefore(line, svg.childNodes[0]);
 
-      }
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttributeNS(null, 'x1', 0);
+      line.setAttributeNS(null, 'y1', width/2);
+      line.setAttributeNS(null, 'x2', width);
+      line.setAttributeNS(null, 'y2', width/2);
+      line.setAttributeNS(null, 'stroke', '#111');
+      line.setAttributeNS(null, 'stroke-width', .2);
+      svg.insertBefore(line, svg.childNodes[0]);
 
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttributeNS(null, 'x1', 0);
+      line.setAttributeNS(null, 'y1', 0);
+      line.setAttributeNS(null, 'x2', width);
+      line.setAttributeNS(null, 'y2', width);
+      line.setAttributeNS(null, 'stroke', '#111');
+      line.setAttributeNS(null, 'stroke-width', .2);
+      svg.insertBefore(line, svg.childNodes[0]);
+
+      var line = document.createElementNS(svgNS, 'line');
+      line.setAttributeNS(null, 'x1', 0);
+      line.setAttributeNS(null, 'y1', width);
+      line.setAttributeNS(null, 'x2', width);
+      line.setAttributeNS(null, 'y2', 0);
+      line.setAttributeNS(null, 'stroke', '#111');
+      line.setAttributeNS(null, 'stroke-width', .2);
+      svg.insertBefore(line, svg.childNodes[0]);      
     }
-
-  </script>  
+  </script>
 </body>
+
 </html>
